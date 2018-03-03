@@ -1,2 +1,0 @@
-Escriba aqui su número de cédula, nombre y apellido separado por coma
-3298639,Fernando,Mancía
