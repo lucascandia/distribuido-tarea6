@@ -1,3 +1,4 @@
+package py.una.entidad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,18 @@ public class Persona {
 	
 	List<String> asignaturas;
 	
-	Persona(){
+	public Persona(){
 		asignaturas = new ArrayList<String>();
 	}
 
+	public Persona(Long pcedula, String pnombre, String papellido){
+		this.cedula = pcedula;
+		this.nombre = pnombre;
+		this.apellido = papellido;
+		
+		asignaturas = new ArrayList<String>();
+	}
+	
 	public Long getCedula() {
 		return cedula;
 	}
