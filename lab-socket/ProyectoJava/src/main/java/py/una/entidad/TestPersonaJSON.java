@@ -6,14 +6,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class RepresentacionDatos {
+public class TestPersonaJSON {
 
 
     public static void main(String[] args) throws Exception {
-    	RepresentacionDatos representacion = new RepresentacionDatos();
+    	TestPersonaJSON representacion = new TestPersonaJSON();
     	
-    	String str = "{\"cedula\":123123,\"nombre\":\"Ana\",\"apellido\":\"Perez\",\"asignaturas\":[\"Sistemas Distribuidos\",\"Fisica\",\"Inteligencia Artificial\"]}";
-    	
+    	System.out.println("Ejemplo de uso 1: pasar de objeto a string");
     	Persona p = new Persona();
     	p.setNombre("Maria");
     	p.setApellido("Gomez");
@@ -22,15 +21,15 @@ public class RepresentacionDatos {
     	p.getAsignaturas().add("Quimica");
     	p.getAsignaturas().add("Ingles");
     	
-    	
-    	System.out.println("R1: pasar de objeto a string");
     	String r1 = representacion.objetoString(p);
     	System.out.println(r1);
     	
     	
-    	System.out.println("****************************************");
-    	System.out.println("\nR2: pasar de string a objeto");
-    	Persona r2 = representacion.stringObjeto(str);
+    	System.out.println("\n*************************************************************************");
+    	System.out.println("\nEjemplo de uso 2: pasar de string a objeto");
+    	String un_string = "{\"cedula\":123123,\"nombre\":\"Ana\",\"apellido\":\"Perez\",\"asignaturas\":[\"Sistemas Distribuidos\",\"Fisica\",\"Inteligencia Artificial\"]}";
+    	
+    	Persona r2 = representacion.stringObjeto(un_string);
     	System.out.println(r2.nombre + " " + r2.apellido + " " +r2.cedula );
         for(String temp: r2.getAsignaturas()){
         	System.out.println(temp);
