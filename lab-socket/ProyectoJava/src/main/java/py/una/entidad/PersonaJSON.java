@@ -6,11 +6,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class TestPersonaJSON {
+public class PersonaJSON {
 
 
     public static void main(String[] args) throws Exception {
-    	TestPersonaJSON representacion = new TestPersonaJSON();
+    	PersonaJSON representacion = new PersonaJSON();
     	
     	System.out.println("Ejemplo de uso 1: pasar de objeto a string");
     	Persona p = new Persona();
@@ -36,7 +36,7 @@ public class TestPersonaJSON {
         }
     }
     
-    public String objetoString(Persona p) {	
+    public static String objetoString(Persona p) {	
     	
 		JSONObject obj = new JSONObject();
         obj.put("cedula", p.getCedula());
@@ -48,17 +48,20 @@ public class TestPersonaJSON {
         for(String temp: p.getAsignaturas()){
         	list.add(temp);
         }
-        obj.put("asignaturas", list);
+       // if(list.size() > 0) {
+        	obj.put("asignaturas", list);
+        //}
+        
 
         return obj.toJSONString();
     }
     
     
-    public Persona stringObjeto(String str) throws Exception {
+    public static Persona stringObjeto(String str) throws Exception {
     	Persona p = new Persona();
         JSONParser parser = new JSONParser();
 
-        Object obj = parser.parse(str);
+        Object obj = parser.parse(str.trim());
         JSONObject jsonObject = (JSONObject) obj;
 
         Long cedula = (Long) jsonObject.get("cedula");

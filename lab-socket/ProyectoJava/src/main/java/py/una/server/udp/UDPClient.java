@@ -1,7 +1,11 @@
+package py.una.server.udp;
 
 
 import java.io.*;
 import java.net.*;
+
+import py.una.entidad.Persona;
+import py.una.entidad.PersonaJSON;
 
 class UDPClient {
 
@@ -29,11 +33,26 @@ class UDPClient {
             byte[] sendData = new byte[1024];
             byte[] receiveData = new byte[1024];
 
-            System.out.print("Ingrese el mensaje a enviar: ");
-            String sentence = inFromUser.readLine();
-            sendData = sentence.getBytes();
+            System.out.print("Ingrese el número de cédula (debe ser numérico): ");
+            String strcedula = inFromUser.readLine();
+            Long cedula = 0L;
+            try {
+            	cedula = Long.parseLong(strcedula);
+            }catch(Exception e1) {
+            	
+            }
+            
+            System.out.print("Ingrese el nombre: ");
+            String nombre = inFromUser.readLine();
+            System.out.print("Ingrese el apellido: ");
+            String apellido = inFromUser.readLine();
+            
+            Persona p = new Persona(cedula, nombre, apellido);
+            
+            String datoPaquete = PersonaJSON.objetoString(p); 
+            sendData = datoPaquete.getBytes();
 
-            System.out.println("Enviar " + sendData.length + " bytes al servidor.");
+            System.out.println("Enviar " + datoPaquete + " al servidor. ("+ sendData.length + " bytes)");
             DatagramPacket sendPacket =
                     new DatagramPacket(sendData, sendData.length, IPAddress, puertoServidor);
 
@@ -42,7 +61,7 @@ class UDPClient {
             DatagramPacket receivePacket =
                     new DatagramPacket(receiveData, receiveData.length);
 
-            System.out.println("Esperamos si viene el paquete");
+            System.out.println("Esperamos si viene la respuesta.");
 
             //Vamos a hacer una llamada BLOQUEANTE entonces establecemos un timeout maximo de espera
             clientSocket.setSoTimeout(10000);
@@ -51,12 +70,19 @@ class UDPClient {
                 // ESPERAMOS LA RESPUESTA, BLOQUENTE
                 clientSocket.receive(receivePacket);
 
-                String modifiedSentence = new String(receivePacket.getData());
+                String respuesta = new String(receivePacket.getData());
+                Persona presp = PersonaJSON.stringObjeto(respuesta.trim());
+                
                 InetAddress returnIPAddress = receivePacket.getAddress();
                 int port = receivePacket.getPort();
 
                 System.out.println("Respuesta desde =  " + returnIPAddress + ":" + port);
-                System.out.println("Mensaje: " + modifiedSentence);
+                System.out.println("Asignaturas: ");
+                
+                for(String tmp: presp.getAsignaturas()) {
+                	System.out.println(" -> " +tmp);
+                }
+                
 
             } catch (SocketTimeoutException ste) {
 
