@@ -72,6 +72,7 @@ WITH (
  * Modificar el ejemplo del profesor para incluir más funcionalidades.
  * Se deben crear servicios RESTful necesarios para la administración de "asignaturas"
  * Las asignaturas están asociadas a una persona.
+ * Pueden estar en memoria o en base de datos.
  * Los servicios deben poder:
     * crear/modificar/listar/borrar asignaturas.
     * asociar y desasociar una asignatura a una persona.
@@ -80,6 +81,6 @@ WITH (
  * Se debe entregar de la siguiente forma:
      * Enviar un email al profesor:  fernandomancia@gmail.com 
      * El email debe contener el link del repositorio personal del alumn@
-     * El email debe imagenes en PNG o JPG de los prints de pantalla de las pruebas a los restful solicitados.
-     * En link del repositorio del alumn@ debe estar el código fuente de la tarea solicitada.
+     * El email debe contener imagenes en PNG o JPG de los prints de pantalla de las pruebas a los restful solicitados.
+     * En el link del repositorio gitlab del alumn@ debe estar el código fuente de la tarea solicitada.
      * Se debe entregar a más tardar el Lunes 07/05/2018
