@@ -7,6 +7,7 @@ Laboratorio de WebServices
 * Instalar Jboss tools 
 * Instalar SOAP-UI
 * Instalar PostMan para Google Chrome
+* Instalar el motor de base de datos Postgresql
 
 **Descargar el proyecto**
 
@@ -28,9 +29,26 @@ Via transferencia de archivos por parte del Profesor
  * Finalizar
  * El IDE comenzará a importar las librerías de Maven
  
+**Base de datos**
+ * Crear una base de datos
+ * Configurar los datos de configuración y acceso en la clase "Bd.java"
+
+    CREATE TABLE persona
+    (
+        cedula integer NOT NULL,
+        nombre character varying(1000),
+        apellido character varying(1000),
+        CONSTRAINT pk_cedula PRIMARY KEY (cedula)
+    )
+    WITH (
+        OIDS=FALSE
+    );
+
+
 
 **Verificación del código fuente**
- * Verificación de la clase JaxRsActivator
+ * Verificación de la clase JaxRsActivator.java
+ * Verificación de la clase Bd.java
  * Verificación de la clase Persona.java
  * Verificación de la clase PersonaDAO.java
  * Verificación de la clase PersonaService.java
@@ -47,8 +65,6 @@ Via transferencia de archivos por parte del Profesor
  * GET http://localhost:8080/personas/rest/personas/cedula?cedula=160160
  * POST http://localhost:8080/personas/rest/personas/
  * DELETE http://localhost:8080/personas/rest/personas/150150
-
- 
 
  
 
