@@ -1,18 +1,26 @@
-package py.una.bd;
+package py.una.pol.personas.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
-import py.una.entidad.Persona;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
+import py.una.pol.personas.model.Persona;
+
+@Stateless
 public class PersonaDAO {
  
+	
+    @Inject
+    private Logger log;
+    
 	/**
 	 * 
 	 * @param condiciones 
@@ -39,23 +47,23 @@ public class PersonaDAO {
         	}
         	
         } catch (SQLException ex) {
-            System.out.println("Error en la seleccion: " + ex.getMessage());
+            log.severe("Error en la seleccion: " + ex.getMessage());
         }
         finally  {
         	try{
         		conn.close();
         	}catch(Exception ef){
-        		System.out.println("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
+        		log.severe("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
         	}
         }
 		return lista;
 
 	}
 	
-	public List<Persona> seleccionarPorCedula(long cedula) {
+	public Persona seleccionarPorCedula(long cedula) {
 		String SQL = "SELECT cedula, nombre, apellido FROM persona WHERE cedula = ? ";
 		
-		List<Persona> lista = new ArrayList<Persona>();
+		Persona p = null;
 		
 		Connection conn = null; 
         try 
@@ -67,27 +75,26 @@ public class PersonaDAO {
         	ResultSet rs = pstmt.executeQuery();
 
         	while(rs.next()) {
-        		Persona p = new Persona();
+        		p = new Persona();
         		p.setCedula(rs.getLong(1));
         		p.setNombre(rs.getString(2));
         		p.setApellido(rs.getString(3));
-        		
-        		lista.add(p);
         	}
         	
         } catch (SQLException ex) {
-            System.out.println("Error en la seleccion: " + ex.getMessage());
+        	log.severe("Error en la seleccion: " + ex.getMessage());
         }
         finally  {
         	try{
         		conn.close();
         	}catch(Exception ef){
-        		System.out.println("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
+        		log.severe("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
         	}
         }
-		return lista;
+		return p;
 
 	}
+	
 	
     public long insertar(Persona p) throws SQLException {
 
@@ -114,17 +121,17 @@ public class PersonaDAO {
                         id = rs.getLong(1);
                     }
                 } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
+                	throw ex;
                 }
             }
         } catch (SQLException ex) {
-            System.out.println("Error en la insercion: " + ex.getMessage());
+        	throw ex;
         }
         finally  {
         	try{
         		conn.close();
         	}catch(Exception ef){
-        		System.out.println("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
+        		log.severe("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
         	}
         }
         	
@@ -162,13 +169,13 @@ public class PersonaDAO {
                 }
             }
         } catch (SQLException ex) {
-            System.out.println("Error en la actualizacion: " + ex.getMessage());
+        	log.severe("Error en la actualizacion: " + ex.getMessage());
         }
         finally  {
         	try{
         		conn.close();
         	}catch(Exception ef){
-        		System.out.println("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
+        		log.severe("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
         	}
         }
         return id;
@@ -196,17 +203,20 @@ public class PersonaDAO {
                         id = rs.getLong(1);
                     }
                 } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
+                	log.severe("Error en la eliminación: " + ex.getMessage());
+                	throw ex;
                 }
             }
         } catch (SQLException ex) {
-            System.out.println("Error en la eliminación: " + ex.getMessage());
+        	log.severe("Error en la eliminación: " + ex.getMessage());
+        	throw ex;
         }
         finally  {
         	try{
         		conn.close();
         	}catch(Exception ef){
-        		System.out.println("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
+        		log.severe("No se pudo cerrar la conexion a BD: "+ ef.getMessage());
+        		throw ef;
         	}
         }
         return id;
