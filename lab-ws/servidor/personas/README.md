@@ -30,21 +30,21 @@ Via transferencia de archivos por parte del Profesor
  * El IDE comenzará a importar las librerías de Maven
  
 **Base de datos**
- * Crear una base de datos
- * Configurar los datos de configuración y acceso en la clase "Bd.java"
+ * Crear una base de datos.
+ * Configurar los datos de configuración y acceso en la clase "Bd.java".
 
-    CREATE TABLE persona
-    (
-        cedula integer NOT NULL,
-        nombre character varying(1000),
-        apellido character varying(1000),
-        CONSTRAINT pk_cedula PRIMARY KEY (cedula)
-    )
-    WITH (
-        OIDS=FALSE
-    );
-
-
+```sql
+CREATE TABLE persona
+(
+    cedula integer NOT NULL,
+    nombre character varying(1000),
+    apellido character varying(1000),
+    CONSTRAINT pk_cedula PRIMARY KEY (cedula)
+)
+WITH (
+   OIDS=FALSE
+ );
+```
 
 **Verificación del código fuente**
  * Verificación de la clase JaxRsActivator.java
