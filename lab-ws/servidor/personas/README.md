@@ -68,3 +68,13 @@ WITH (
 
  
 
+**Tarea**
+ * Modificar el ejemplo del profesor para incluir más funcionalidades.
+ * Se deben crear servicios RESTful necesarios para la administración de "asignaturas"
+ * Las asignaturas están asociadas a una persona.
+ * Los servicios deben poder:
+    * crear/modificar/listar/borrar asignaturas.
+    * asociar y desasociar una asignatura a una persona.
+    * listar todas las asignaturas de una persona.
+    * listar todos los alumnos de una asignatura.
+    
