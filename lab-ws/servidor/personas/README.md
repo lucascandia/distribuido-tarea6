@@ -80,10 +80,6 @@ WITH (
  * Se debe entregar de la siguiente forma:
      * Enviar un email al profesor:  fernandomancia@gmail.com 
      * El email debe contener el link del repositorio personal del alumn@
-     * El email debe prints de pantalla de las pruebas a los restful solicitados.
+     * El email debe imagenes en PNG o JPG de los prints de pantalla de las pruebas a los restful solicitados.
      * En link del repositorio del alumn@ debe estar el código fuente de la tarea solicitada.
      * Se debe entregar a más tardar el Lunes 07/05/2018
-     
-     * En e
- * 
-    
