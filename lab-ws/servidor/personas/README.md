@@ -65,7 +65,7 @@ WITH (
  * GET http://localhost:8080/personas/rest/personas/cedula?cedula=160160
  * POST http://localhost:8080/personas/rest/personas/
  * DELETE http://localhost:8080/personas/rest/personas/150150
-
+ * Imágenes de ejemplo de utilización de POSTMAN para la petición POST en el directorio: "sd\lab-ws\cliente-postman"
  
 
 **Tarea**
