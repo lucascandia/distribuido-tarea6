@@ -27,7 +27,7 @@ public class PersonaDAO {
 	 * @return
 	 */
 	public List<Persona> seleccionar() {
-		String query = "SELECT cedula, nombre, apellido FROM persona ";
+		String query = "SELECT cedula, nombre, apellido FROM persona ORDER BY nombre";
 		
 		List<Persona> lista = new ArrayList<Persona>();
 		
