@@ -98,7 +98,7 @@ WITH (
      * Se debe entregar el Sábado 25/05/2019
 	 
 	 
-** Ejemplo de llamado a servicio REST utilizando métodos de Java Estandar **
+**Ejemplo de llamado a servicio REST utilizando métodos de Java Estandar**
 
         try {
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
