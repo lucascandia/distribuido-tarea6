@@ -11,7 +11,7 @@ public class TCPClient_timeout {
         PrintWriter out = null;
         BufferedReader in = null;
         int TimeOutConexion = 7000; //milisegundos
-		int TimeOutRecepcion = 7000; //milisegundos
+		int TimeOutRecepcion = 5000; //milisegundos
         long ini = 0;
         long fin = 0;
 

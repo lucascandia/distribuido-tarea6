@@ -9,7 +9,7 @@ public class TCPServer {
     public static void main(String[] args) throws Exception {
 
         int puertoServidor = 4444;
-        int tiempo_procesamiento_miliseg = 1000;
+        int tiempo_procesamiento_miliseg = 10000;
 		
 		try{
 			tiempo_procesamiento_miliseg = Integer.parseInt(args[0]);

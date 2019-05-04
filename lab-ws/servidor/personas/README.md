@@ -69,18 +69,57 @@ WITH (
  
 
 **Tarea**
- * Modificar el ejemplo del profesor para incluir más funcionalidades.
- * Se deben crear servicios RESTful necesarios para la administración de "asignaturas"
- * Las asignaturas están asociadas a una persona.
- * Pueden estar en memoria o en base de datos.
- * Los servicios deben poder:
-    * crear/modificar/listar/borrar asignaturas.
-    * asociar y desasociar una asignatura a una persona.
-    * listar todas las asignaturas de una persona.
-    * listar todos los alumnos de una asignatura.
- * Se debe entregar de la siguiente forma:
+ * Proyecto Servidor: Modificar el proyecto de ejemplo del profesor para incluir más funcionalidades.
+    * Se deben crear servicios RESTful necesarios para la administración de "asignaturas"
+    * Las asignaturas están asociadas a una persona.
+    * Las asignaturas deben estar creadas en base de datos.
+    * Los servicios RESTful deben poder:
+        * crear/modificar/listar/borrar asignaturas.
+        * asociar y desasociar una asignatura a una persona.
+        * listar todas las asignaturas de una persona.
+        * listar todos los alumnos de una asignatura.
+		
+ * Proyecto Cliente: Crear un programa cliente que realice que mediante los servicios rest del servidor lo siguiente:
+	* Crear un proyecto Java Standalone, que pueda ser ejecutado simplemente en consola a través de una clase principal y con el método "main".
+	* Investigar el consumo de servicios rest utilizando las clases: java.net.HttpURLConnection; java.net.URL; 
+	* Para el parseo JSON puede utilizar cualquier librería como Json-Java. Ejemplo de una de sus clases org.json.JSONObject; 
+	* Creación de una persona, solicitando datos al usuario.
+	* Listado de personas existentes. Impresión en consola.
+	* Listado de asignaturas de una persona. Impresión en consola.
+	* Creación de una asignatura.
+ 
+ * Forma de entrega:
      * Enviar un email al profesor:  fernandomancia@gmail.com 
-     * El email debe contener el link del repositorio personal del alumn@
+	 * En el asunto del correo debe decir "Tarea RestFul - NOMBRE APELLIDO"
+     * El email debe contener el link del repositorio personal del alumno/a con la posibilidad de que el usuario "fmancia" del gitlab.com
      * El email debe contener imagenes en PNG o JPG de los prints de pantalla de las pruebas a los restful solicitados.
      * En el link del repositorio gitlab del alumn@ debe estar el código fuente de la tarea solicitada.
-     * Se debe entregar a más tardar el Lunes 07/05/2018
+	 * Se aceptan trabajos de 1 o 2 integrantes. En el código fuente del cliente se deberá agregar como comentario los nombres completos de cada uno.
+     * Se debe entregar el Sábado 25/05/2019
+	 
+	 
+** Ejemplo de llamado a servicio REST utilizando métodos de Java Estandar **
+
+        try {
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestProperty("Accept", "application/json");
+			conn.setRequestProperty("Content-Type", "application/json");
+			conn.setRequestMethod("GET");
+			
+			if (conn.getResponseCode() != 200) {
+				throw new RuntimeException("Error HTTP - código : " + conn.getResponseCode()+" : "+conn.getResponseMessage());
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+				(conn.getInputStream())));
+
+			String output;
+			System.out.println("Impresión del contenido de la respuesta: \n");
+			while ((output = br.readLine()) != null) {
+				System.out.println(output);
+			}
+
+			conn.disconnect();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
