@@ -106,7 +106,7 @@ WITH (
 			conn.setRequestProperty("Content-Type", "application/json");
 			conn.setRequestMethod("GET");
 			
-			if (conn.getResponseCode() != 200) {
+			if (conn.getResponseCode() < 200  || conn.getResponseCode() >= 300 ) {
 				throw new RuntimeException("Error HTTP - código : " + conn.getResponseCode()+" : "+conn.getResponseMessage());
 			}
 
