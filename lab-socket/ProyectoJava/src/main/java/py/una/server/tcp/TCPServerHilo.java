@@ -1,15 +1,19 @@
 package py.una.server.tcp;
 
 import java.net.*;
+import java.util.Iterator;
 import java.io.*;
 
 public class TCPServerHilo extends Thread {
 
     private Socket socket = null;
 
-    public TCPServerHilo(Socket socket) {
+    TCPMultiServer servidor;
+    
+    public TCPServerHilo(Socket socket, TCPMultiServer servidor ) {
         super("TCPServerHilo");
         this.socket = socket;
+        this.servidor = servidor;
     }
 
     public void run() {
@@ -24,12 +28,35 @@ public class TCPServerHilo extends Thread {
 
             while ((inputLine = in.readLine()) != null) {
                 System.out.println("Mensaje recibido: " + inputLine);
-
+                
+                //out.println(inputLine);
+                
+                //to-do: utilizar json
                 if (inputLine.equals("Bye")) {
-                    out.println(inputLine);
+                    outputLine = "Usted apago el hilo";
                     break;
+                    
+                }else if (inputLine.equals("Terminar todo")) {
+                    servidor.listening = false;
+                    outputLine = "Usted apago todo";
+                    break;
+                    
+                }else if (inputLine.split(":").length > 1) {
+                	String usuario = inputLine.split(":")[1]; 
+                	servidor.usuarios.add(usuario);
+                	outputLine = "Usuario/a "+usuario+"agregado";
+
+                }else {
+                	outputLine = "Lista de usuarios: " ;
+                               	
+                	Iterator<String> iter = servidor.usuarios.iterator();
+                	
+                    while (iter.hasNext()) { 
+                    	outputLine = outputLine + " - " + iter.next(); 
+                    } 
                 }
-                outputLine = "Eco : " + inputLine;
+                
+                
                 out.println(outputLine);
             }
             out.close();
