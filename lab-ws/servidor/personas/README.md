@@ -1,12 +1,9 @@
 Laboratorio de WebServices
 
 **Elementos a utilizar**
-* JavaEE, JDK 1.8
-* IDE Eclipse, elegir la opción Eclipse for Java EE
-* IDE Eclipse, instalar Jboss Tools (Menú: Help -> Eclipse MarketPlace. Buscar "Jboss Tools"). Este paso solo es necesario para crear un proyecto nuevo.
-* Instalar Jboss tools 
-* Instalar SOAP-UI
-* Instalar PostMan para Google Chrome
+* JavaEE, JDK 1.8 o superior
+* IDE Eclipse, elegir la opción "Eclipse for Java EE developers"
+* Instalar PostMan https://www.postman.com/
 * Instalar el motor de base de datos Postgresql
 
 **Descargar el proyecto**
@@ -55,7 +52,7 @@ WITH (
  * Verificación de la clase PersonaRESTService.java
 
 **Deployar en Servidor**
- * Desde el IDE Eclipse, configurar el servidor de aplicaciones Wildfly10 (Verificar la guía de clase anterior sobre el laboratorio de JavaRMI)
+ * Desde el IDE Eclipse, configurar el servidor de aplicaciones Wildfly10 (Verificar la guía de clase anterior sobre el laboratorio de servidor de aplicaciones JavaEE)
  * Deploy del proyecto "personas" en el servidor Wildfly
 
 
@@ -68,34 +65,6 @@ WITH (
  * Imágenes de ejemplo de utilización de POSTMAN para la petición POST en el directorio: https://gitlab.com/fmancia/sd/tree/master/lab-ws/cliente-postman
  
 
-**Tarea**
- * Proyecto Servidor: Modificar el proyecto de ejemplo del profesor para incluir más funcionalidades.
-    * Se deben crear servicios RESTful necesarios para la administración de "asignaturas"
-    * Las asignaturas están asociadas a una persona.
-    * Las asignaturas deben estar creadas en base de datos.
-    * Los servicios RESTful deben poder:
-        * crear/modificar/listar/borrar asignaturas.
-        * asociar y desasociar una asignatura a una persona.
-        * listar todas las asignaturas de una persona.
-        * listar todos los alumnos de una asignatura.
-		
- * Proyecto Cliente: Crear un programa cliente que realice que mediante los servicios rest del servidor lo siguiente:
-	* Crear un proyecto Java Standalone, que pueda ser ejecutado simplemente en consola a través de una clase principal y con el método "main".
-	* Investigar el consumo de servicios rest utilizando las clases: java.net.HttpURLConnection; java.net.URL; 
-	* Para el parseo JSON puede utilizar cualquier librería como Json-Java. Ejemplo de una de sus clases org.json.JSONObject; 
-	* Creación de una persona, solicitando datos al usuario.
-	* Listado de personas existentes. Impresión en consola.
-	* Listado de asignaturas de una persona. Impresión en consola.
-	* Creación de una asignatura.
- 
- * Forma de entrega:
-     * Enviar un email al profesor:  fernandomancia@gmail.com 
-	 * En el asunto del correo debe decir "Tarea RestFul - NOMBRE APELLIDO"
-     * El email debe contener el link del repositorio personal del alumno/a con la posibilidad de que el usuario "fmancia" del gitlab.com
-     * El email debe contener imagenes en PNG o JPG de los prints de pantalla de las pruebas a los restful solicitados.
-     * En el link del repositorio gitlab del alumn@ debe estar el código fuente de la tarea solicitada.
-	 * Se aceptan trabajos de 1 o 2 integrantes. En el código fuente del cliente se deberá agregar como comentario los nombres completos de cada uno.
-     * Se debe entregar el Sábado 25/05/2019
 	 
 	 
 **Ejemplo de llamado a servicio REST utilizando métodos de Java Estandar**
