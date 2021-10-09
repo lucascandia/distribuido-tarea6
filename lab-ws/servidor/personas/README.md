@@ -2,7 +2,7 @@ Laboratorio de WebServices
 
 **Elementos a utilizar**
 * JavaEE, JDK 1.8 o superior
-* IDE Eclipse, elegir la opción "Eclipse for Java EE developers"
+* IDE Eclipse, descargar de https://www.eclipse.org/downloads/. En el proceso de instalación elegir la opción "Eclipse for Java EE developers"
 * Instalar PostMan https://www.postman.com/
 * Instalar el motor de base de datos Postgresql
 
@@ -16,7 +16,6 @@ Via HTTPS:
     
     git clone https://gitlab.com/fmancia/sd.git
     
-Via transferencia de archivos por parte del Profesor
 
     
 **Importar proyecto**
@@ -52,7 +51,7 @@ WITH (
  * Verificación de la clase PersonaRESTService.java
 
 **Deployar en Servidor**
- * Desde el IDE Eclipse, configurar el servidor de aplicaciones Wildfly10 (Verificar la guía de clase anterior sobre el laboratorio de servidor de aplicaciones JavaEE)
+ * Desde el IDE Eclipse, configurar el servidor de aplicaciones Wildfly (Verificar la guía de clase anterior sobre el laboratorio de servidor de aplicaciones JavaEE)
  * Deploy del proyecto "personas" en el servidor Wildfly
 
 
