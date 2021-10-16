@@ -115,15 +115,15 @@ public class PersonaRESTService {
             // Handle generic exceptions
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
-            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+            builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(responseObj);
         }
 
         return builder.build();
     }
 
    @DELETE
-   @Path("/{cedula}")
-   public Response borrar(@PathParam("cedula") long cedula)
+   //@Path("/{cedula}")
+   public Response borrar(@QueryParam("cedula") long cedula)
    {      
 	   Response.ResponseBuilder builder = null;
 	   try {

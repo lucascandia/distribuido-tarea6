@@ -3,11 +3,8 @@ package py.una.pol.personas.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
-@SuppressWarnings("serial")
-@XmlRootElement
 public class Persona  implements Serializable {
 
 	Long cedula;
