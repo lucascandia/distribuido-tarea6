@@ -55,7 +55,10 @@ WITH (
  * Deploy del proyecto "personas" en el servidor Wildfly
 
 
-**Verificación con herramientas: POSTMAN / SOAP-UI / Browser**
+**Clientes del servicio REST de Personas**
+
+- **a) Verificación con herramientas: POSTMAN / SOAP-UI / Browser**
+
  * GET http://localhost:8080/personas/rest/personas
  * GET http://localhost:8080/personas/rest/personas/3298639
  * GET http://localhost:8080/personas/rest/personas/cedula?cedula=160160
@@ -64,9 +67,13 @@ WITH (
  * Imágenes de ejemplo de utilización de POSTMAN para la petición POST en el directorio: https://gitlab.com/fmancia/sd/tree/master/lab-ws/cliente-postman
  
 
+- **b) Cliente en lenguaje de programación Python**
+ * Seguir el README.md = https://gitlab.com/fmancia/sd/-/blob/master/lab-ws/cliente-python/README.md
+ * Código fuente = https://gitlab.com/fmancia/sd/-/blob/master/lab-ws/cliente-python/clientePersonas.py 
+ * Solo incluye servicio de Listar y Crear persona.
+
 	 
-	 
-**Ejemplo de llamado a servicio REST utilizando métodos de Java Estandar**
+- **c) Ejemplo de llamado a servicio REST utilizando métodos de Java Estandar**
 
         try {
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
